@@ -3,77 +3,125 @@
         <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 p-5">
             <h1>Welcome to, Monitoring FTE!</h1>
         </div>
-        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div
-                class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-                <x-placeholder-pattern
-                    class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20"/>
-            </div>
-            <div
-                class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-                <x-placeholder-pattern
-                    class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20"/>
-            </div>
-            <div
-                class="relative aspect-video overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-                <x-placeholder-pattern
-                    class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20"/>
+        <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 p-5">
+            <div class="grid grid-cols-4 gap-4">
+                <flux:field>
+                    <flux:label>Company</flux:label>
+                    <flux:select wire:model="industry" placeholder="Choose industry...">
+                        <flux:select.option>Photography</flux:select.option>
+                        <flux:select.option>Design services</flux:select.option>
+                        <flux:select.option>Web development</flux:select.option>
+                        <flux:select.option>Accounting</flux:select.option>
+                        <flux:select.option>Legal services</flux:select.option>
+                        <flux:select.option>Consulting</flux:select.option>
+                        <flux:select.option>Other</flux:select.option>
+                    </flux:select>
+                    <flux:error name="username"/>
+                </flux:field>
+                <flux:field>
+                    <flux:label>Work Area</flux:label>
+                    <flux:select wire:model="industry" placeholder="Choose industry...">
+                        <flux:select.option>Photography</flux:select.option>
+                        <flux:select.option>Design services</flux:select.option>
+                        <flux:select.option>Web development</flux:select.option>
+                        <flux:select.option>Accounting</flux:select.option>
+                        <flux:select.option>Legal services</flux:select.option>
+                        <flux:select.option>Consulting</flux:select.option>
+                        <flux:select.option>Other</flux:select.option>
+                    </flux:select>
+                    <flux:error name="username"/>
+                </flux:field>
+                <flux:field>
+                    <flux:label>Status For Week</flux:label>
+                    <flux:select wire:model="industry" placeholder="Choose industry...">
+                        <flux:select.option>Photography</flux:select.option>
+                        <flux:select.option>Design services</flux:select.option>
+                        <flux:select.option>Web development</flux:select.option>
+                        <flux:select.option>Accounting</flux:select.option>
+                        <flux:select.option>Legal services</flux:select.option>
+                        <flux:select.option>Consulting</flux:select.option>
+                        <flux:select.option>Other</flux:select.option>
+                    </flux:select>
+                    <flux:error name="username"/>
+                </flux:field>
+                <flux:field>
+                    <flux:label>Status For Month</flux:label>
+                    <flux:select wire:model="industry" placeholder="Choose industry...">
+                        <flux:select.option>Photography</flux:select.option>
+                        <flux:select.option>Design services</flux:select.option>
+                        <flux:select.option>Web development</flux:select.option>
+                        <flux:select.option>Accounting</flux:select.option>
+                        <flux:select.option>Legal services</flux:select.option>
+                        <flux:select.option>Consulting</flux:select.option>
+                        <flux:select.option>Other</flux:select.option>
+                    </flux:select>
+                    <flux:error name="username"/>
+                </flux:field>
             </div>
         </div>
+
         <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 p-5">
             <div class="grid gap-4 md:grid-cols-4">
                 <!-- Total Company -->
-                <div class="flex flex-col justify-center items-start bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
-                    <div class="text-3xl font-bold text-gray-900">72</div>
-                    <div class="text-sm text-gray-500">mitra</div>
-                    <div class="mt-2 flex items-center text-sm text-gray-700 font-medium">
-                        <svg class="w-6 h-6 mr-2 text-gray-600" fill="none" stroke="currentColor" stroke-width="2"
-                             viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M9 20H4v-2a3 3 0 015.356-1.857M15 11a3 3 0 100-6 3 3 0 000 6zm-6 0a3 3 0 100-6 3 3 0 000 6zm6 8H9v-2a3 3 0 016 0v2z"/>
-                        </svg>
-                        Total Company
+                <div
+                    class="flex justify-center items-center bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
+                    <div class="w-14 flex-1 justify-items-center-safe">
+                        <flux:icon.users/>
+                    </div>
+                    <div class="w-64 flex-2">
+                        <div class="text-xl font-medium text-gray-700">Total Company</div>
+                        <div class="flex justify-center items-end">
+                            <div class=" w-16 flex-0 text-3xl font-bold text-gray-900">18</div>
+                            <div class="flex-1 text-sm text-gray-500 m-1">mitra</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Active Project -->
-                <div class="flex flex-col justify-center items-center bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow text-center">
-                    <div class="text-3xl font-bold text-gray-900">102</div>
-                    <div class="text-sm text-gray-500">active</div>
-                    <div class="mt-2 w-full flex items-center justify-center">
-                        <div class="text-sm font-medium text-gray-700">Active Project</div>
-                        <div class="ml-2 text-xs text-gray-500">60%</div>
+                <div
+                    class="flex justify-center items-center bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
+                    <div class="w-14 flex-1 justify-items-center-safe">
+                        <flux:icon.timer/>
+                    </div>
+                    <div class="w-64 flex-2">
+                        <div class="text-xl font-medium text-gray-700">Active Project</div>
+                        <div class="flex justify-center items-end">
+                            <div class=" w-16 flex-0 text-3xl font-bold text-gray-900">18</div>
+                            <div class="flex-1 text-sm text-gray-500 m-1">active</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Impediment -->
-                <div class="flex flex-col justify-center items-center bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow text-center">
-                    <div class="text-3xl font-bold text-gray-900">28</div>
-                    <div class="text-sm text-gray-500">issued</div>
-                    <div class="mt-2 w-full flex items-center justify-center">
-                        <div class="text-sm font-medium text-gray-700">Impediment</div>
-                        <div class="ml-2 text-xs text-gray-500">50%</div>
+                <div
+                    class="flex justify-center items-center bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
+                    <div class="w-14 flex-1 justify-items-center-safe">
+                        <flux:icon.timer-off/>
+                    </div>
+                    <div class="w-64 flex-2">
+                        <div class="text-xl font-medium text-gray-700">Impediment</div>
+                        <div class="flex justify-center items-end">
+                            <div class=" w-16 flex-0 text-3xl font-bold text-gray-900">18</div>
+                            <div class="flex-1 text-sm text-gray-500 m-1">issued</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Data ABK -->
-                <div class="flex flex-col justify-center  items-center bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
+                <div
+                    class="flex flex-col justify-center  items-center bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
                     <div class="text-3xl font-bold text-gray-900">
-                        <svg class="w-6 h-6 mr-2 text-gray-600" fill="none" stroke="currentColor" stroke-width="2"
-                             viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M9 20H4v-2a3 3 0 015.356-1.857M15 11a3 3 0 100-6 3 3 0 000 6zm-6 0a3 3 0 100-6 3 3 0 000 6zm6 8H9v-2a3 3 0 016 0v2z"/>
-                        </svg>
+                        <flux:icon.database/>
                     </div>
                     <div class="mt-2 w-full flex items-center justify-center">
-                        <div class="text-sm font-medium text-gray-700">Data ABK</div>
+                        <div class="text-sm text-gray-700 font-bold">Data ABK</div>
                     </div>
                 </div>
             </div>
         </div>
         <div
             class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
-            <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20"/>
+            {{--            <livewire:dashboard-table />--}}
         </div>
     </div>
 </x-layouts.app>
