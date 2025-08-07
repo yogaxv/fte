@@ -11,5 +11,5 @@ Route::middleware([
 ])->group(function () {
     Route::redirect('security', 'security/users');
 
-    Volt::route('security/users', 'users.table')->name('users.index');
+    Volt::route('security/users', 'users.list')->name('users.list');
 });
