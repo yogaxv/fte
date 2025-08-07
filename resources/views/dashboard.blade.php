@@ -1,9 +1,9 @@
 <x-layouts.app :title="__('Dashboard')">
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
-        <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 p-5">
+        <div class="relative overflow-hidden rounded-xl border bg-white border-neutral-200 dark:border-neutral-700 p-5">
             <h1>Welcome to, Monitoring FTE!</h1>
         </div>
-        <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 p-5">
+        <div class="relative overflow-hidden rounded-xl border bg-white border-neutral-200 dark:border-neutral-700 p-5">
             <div class="grid grid-cols-4 gap-4">
                 <flux:field>
                     <flux:label>Company</flux:label>
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="relative overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 p-5">
+        <div class="relative overflow-hidden rounded-xl border bg-white border-neutral-200 dark:border-neutral-700 p-5">
             <div class="grid gap-4 md:grid-cols-4">
                 <!-- Total Company -->
                 <div
@@ -120,7 +120,8 @@
             </div>
         </div>
         <div
-            class="relative h-full flex-1 overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700">
+            class="relative h-full flex-1 overflow-hidden bg-white rounded-xl border border-neutral-200 dark:border-neutral-700 p-5">
+            <h3>Dashboard Status Vendor</h3>
             {{--            <livewire:dashboard-table />--}}
         </div>
     </div>
