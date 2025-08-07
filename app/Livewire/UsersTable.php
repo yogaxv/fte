@@ -10,9 +10,17 @@ class UsersTable extends DataTableComponent
 {
     protected $model = User::class;
 
+    protected $listeners = ['refreshUsersTable' => '$refresh'];
+
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+        $this->setSearchIcon('heroicon-m-magnifying-glass');
+
+        $this->setSearchIconAttributes([
+            'class' => 'h-4 w-4',
+            'style' => 'color: #000000',
+        ]);
     }
 
     public function columns(): array
