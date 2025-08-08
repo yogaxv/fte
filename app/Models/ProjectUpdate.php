@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ProjectUpdate extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
+        'date',
         'vendor_id',
         'project_id',
         'job_status',
