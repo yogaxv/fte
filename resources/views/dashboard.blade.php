@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="relative overflow-hidden rounded-xl border bg-white border-neutral-200 dark:border-neutral-700 p-5">
+        <div class="relative items-end overflow-hidden rounded-xl border bg-white border-neutral-200 dark:border-neutral-700 p-5">
             <div class="grid gap-4 md:grid-cols-4">
                 <!-- Total Company -->
                 <div
@@ -108,15 +108,17 @@
                 </div>
 
                 <!-- Data ABK -->
-                <div
-                    class="flex flex-col justify-center  items-center bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
-                    <div class="text-3xl font-bold text-gray-900">
-                        <flux:icon.database/>
+                <a href="{{ route('data-abk') }}">
+                    <div
+                        class="flex flex-col justify-center  items-center bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
+                        <div class="text-3xl font-bold text-gray-900">
+                            <flux:icon.database/>
+                        </div>
+                        <div class="mt-2 w-full flex items-center justify-center">
+                            <div class="text-sm text-gray-700 font-bold">Data ABK</div>
+                        </div>
                     </div>
-                    <div class="mt-2 w-full flex items-center justify-center">
-                        <div class="text-sm text-gray-700 font-bold">Data ABK</div>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
         <div
