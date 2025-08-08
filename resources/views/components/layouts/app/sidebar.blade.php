@@ -14,7 +14,7 @@
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('GENERAL')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                    <flux:navlist.item icon="folder-git-2" :href="route('dashboard')" :current="request()->routeIs('row-data')" wire:navigate>{{ __('Row Data') }}</flux:navlist.item>
+                    <flux:navlist.item icon="folder-git-2" :href="route('row-data')" :current="request()->routeIs('row-data')" wire:navigate>{{ __('Row Data') }}</flux:navlist.item>
                     <flux:navlist.item icon="book-open-text" :href="route('dashboard')" :current="request()->routeIs('form-input')" wire:navigate>{{ __('Form Input') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>

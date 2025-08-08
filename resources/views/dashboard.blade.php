@@ -66,7 +66,7 @@
                 <div
                     class="flex justify-center items-center bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
                     <div class="w-14 flex-1 justify-items-center-safe">
-                        <flux:icon.users/>
+                        <flux:icon.users class="w-12 h-12"/>
                     </div>
                     <div class="w-64 flex-2">
                         <div class="text-xl font-medium text-gray-700">Total Company</div>
@@ -81,7 +81,7 @@
                 <div
                     class="flex justify-center items-center bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
                     <div class="w-14 flex-1 justify-items-center-safe">
-                        <flux:icon.timer/>
+                        <flux:icon.timer class="w-12 h-12"/>
                     </div>
                     <div class="w-64 flex-2">
                         <div class="text-xl font-medium text-gray-700">Active Project</div>
@@ -96,7 +96,7 @@
                 <div
                     class="flex justify-center items-center bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 rounded-xl px-4 py-6 shadow">
                     <div class="w-14 flex-1 justify-items-center-safe">
-                        <flux:icon.timer-off/>
+                        <flux:icon.timer-off class="w-12 h-12"/>
                     </div>
                     <div class="w-64 flex-2">
                         <div class="text-xl font-medium text-gray-700">Impediment</div>

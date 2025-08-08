@@ -166,6 +166,9 @@
     <div
         class="relative h-full flex-1 overflow-hidden bg-white rounded-xl border border-neutral-200 dark:border-neutral-700 p-5">
         <h3>Data Dashboard ABK (Analisis Bebean Kerja Harian)</h3>
+        <div class="mt-5">
+            <livewire:users-table />
+        </div>
     </div>
 </div>
 
