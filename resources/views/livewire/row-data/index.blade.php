@@ -7,7 +7,7 @@
             <div class="w-14 flex-none justify-items-center-safe">
                 <flux:icon.monitor-check class="w-12 h-12"/>
             </div>
-            <div class="flex-1">
+            <div class="flex-1 ml-2">
                 <div class="text-xl font-medium text-gray-700">Row Data</div>
                 <div class="flex justify-center items-end">
                     <div class="flex-1 text-sm text-gray-500">Last update 7 hrs ago</div>
