@@ -30,6 +30,8 @@ new class extends Component {
             'is_superadmin' => ['boolean'],
         ]);
 
+        $type = $validated['is_superadmin'] ? JenisUser::ADMINISTRATOR->value : JenisUser::MEMBER->value;
+
         $userManagement = new \WorkOS\UserManagement();
 
         $woUser = null;
@@ -65,9 +67,9 @@ new class extends Component {
             'name' => $validated['first_name'] . ' ' . $validated['last_name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
-            'type' => $validated['is_superadmin'] ? JenisUser::ADMINISTRATOR : JenisUser::MEMBER,
+            'type' => $type,
             'workos_id' => $woUser->id,
-            'avatar' => $woUser->profile_picture_url ?? 'https://i.pravatar.cc/300',
+            'avatar' => $woUser->profile_picture_url ?? '',
         ]);
 
 

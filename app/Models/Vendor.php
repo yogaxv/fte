@@ -12,7 +12,8 @@ class Vendor extends Model
         'phone',
         'zone',
         'team_count',
-        'members_per_team'
+        'members_per_team',
+        'user_id',
     ];
 
     public function projects()
