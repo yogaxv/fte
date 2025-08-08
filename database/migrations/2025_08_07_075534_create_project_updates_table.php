@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('project_updates', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
             $table->foreignId('vendor_id')->constrained();
             $table->foreignId('project_id')->constrained();
             $table->smallInteger('job_status');
