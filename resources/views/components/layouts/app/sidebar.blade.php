@@ -19,23 +19,12 @@
                 </flux:navlist.group>
 
                 <flux:navlist.group :heading="__('MASTER')" class="grid">
-                    <flux:navlist.item icon="newspaper" :href="route('projects.list')" :current="request()->routeIs('projects.list')" wire:navigate>{{ __('Project') }}</flux:navlist.item>
                     <flux:navlist.item icon="building-office-2" :href="route('vendors.list')" :current="request()->routeIs('vendors.list')" wire:navigate>{{ __('Vendor') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
             <flux:spacer />
 
-            <flux:navlist variant="outline">
-                <flux:navlist.item icon="user" :href="route('users.list')" :current="request()->routeIs('users')" wire:navigate>{{ __('Users') }}</flux:navlist.item>
-{{--                <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">--}}
-{{--                    {{ __('Repository') }}--}}
-{{--                </flux:navlist.item>--}}
-
-{{--                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">--}}
-{{--                    {{ __('Documentation') }}--}}
-{{--                </flux:navlist.item>--}}
-            </flux:navlist>
 
             <!-- Desktop User Menu -->
             <flux:dropdown class="hidden lg:block" position="bottom" align="start">

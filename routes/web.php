@@ -14,7 +14,7 @@ Route::middleware([
     'auth',
     ValidateSessionWithWorkOS::class,
 ])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::get('dashboard', Dashboard\MainDashboard::class)->name('dashboard');
     Route::get('dashboard/data-abk', Dashboard\DataABK::class)->name('data-abk');
     Route::get('row-data', RowData\Index::class)->name('row-data');
     Route::get('query', [\App\Http\Controllers\QueryController::class,'days'])->name('query');

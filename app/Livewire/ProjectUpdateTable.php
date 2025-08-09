@@ -100,17 +100,6 @@ class ProjectUpdateTable extends DataTableComponent
             Column::make("Real Tracing", "actual_tracing")
                 ->sortable()
                 ->searchable(),
-            Column::make("Created at", "created_at")
-                ->sortable(),
-            Column::make("Updated at", "updated_at")
-                ->sortable(),
-            WireLinkColumn::make("Delete Item")
-                ->title(fn($row) => 'Delete Item')
-                ->confirmMessage('Are you sure you want to delete this item?')
-                ->action(fn($row) => 'delete("' . $row->id . '")')
-                ->attributes(fn($row) => [
-                    'class' => 'focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900',
-                ]),
         ];
     }
 
