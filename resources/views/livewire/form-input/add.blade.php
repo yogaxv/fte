@@ -1,75 +1,99 @@
 <?php
 
-use App\Enums\JenisUser;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Project;
+use App\Models\Vendor;
+use App\Models\ProjectUpdate;
 use Livewire\Volt\Component;
 
 new class extends Component {
-    public $tanggal_input;
+    public $date;
     public $vendor_id;
-    public $no_project_aktivasi;
-    public $status_pekerjaan;
-    public $kode_kendala;
-    public $detail_kendala;
-    public $estimasi_tarikan;
-    public $estimasi_tracing;
-    public $realisasi_tarikan;
-    public $realisasi_tracing;
+    public $project_id;
+    public $job_status;
+    public $problem_status;
+    public $problem_details;
+    public $estimated_pull;
+    public $estimated_tracing;
+    public $actual_pull;
+    public $actual_tracing;
 
 
     public string $errorTitle = '';
     public array $errorMessages = [];
+    public $vendors = [];
+    public $projects = [];
+
+    public function mount(): void
+    {
+        $this->vendors = Vendor::select('id', 'code')->get();
+        $this->projects = collect(); // kosong
+    }
+
+    public function updatedVendorId($value): void
+    {
+        $this->projects = Project::where('vendor_id', $value)
+            ->select('id', 'pa_number')
+            ->get();
+
+        // reset project_id jika vendor berubah
+//        $this->project_id = null;
+    }
 
 
-    public function addInput(): void
+    public function addProjectUpdate(): void
     {
         $this->errorTitle = '';
         $this->errorMessages = [];
 
         $validated = $this->validate([
             'date' => ['required', 'date'],
-            'vendor_id' => ['required', 'string', 'max:255'],
-            'number_project' => ['required', 'string', 'max:255'],
-            'status_pekerjaan' => ['required', 'string', 'max:255'],
-            'kode_kendala' => ['nullable', 'string', 'max:255'],
-            'detail_kendala' => ['nullable', 'string'],
-            'estimasi_tarikan' => ['nullable', 'date'],
-            'estimasi_tracing' => ['nullable', 'date'],
-            'realisasi_tarikan' => ['nullable', 'date'],
-            'realisasi_tracing' => ['nullable', 'date'],
+            'vendor_id' => ['required'],
+            'project_id' => ['required'],
+            'job_status' => ['required', 'string'],
+            'problem_status' => ['required', 'string'],
+            'problem_details' => ['nullable', 'string'],
+            'estimated_pull' => ['nullable'],
+            'actual_pull' => ['nullable'],
+            'estimated_tracing' => ['nullable'],
+            'actual_tracing' => ['nullable'],
         ]);
 
-
+        ProjectUpdate::create($validated);
 
 
         $this->dispatch('refreshProjectUpdateTable');
 
         // Reset input fields
-        $this->tanggal_input = null;
-        $this->vendor_id = null;
-        $this->no_project_aktivasi = null;
-        $this->status_pekerjaan = null;
-        $this->kode_kendala = null;
-        $this->detail_kendala = null;
-        $this->estimasi_tarikan = null;
-        $this->estimasi_tracing = null;
-        $this->realisasi_tarikan = null;
-        $this->realisasi_tracing = null;
+        $this->resetForm();
+    }
+    public function resetForm()
+    {
+        $this->reset([
+            'date',
+            'vendor_id',
+            'project_id',
+            'job_status',
+            'problem_status',
+            'problem_details',
+            'estimated_pull',
+            'estimated_tracing',
+            'actual_pull',
+            'actual_tracing'
+        ]);
     }
 };
 ?>
 
 
 <div xmlns:flux="http://www.w3.org/1999/html">
-    <flux:modal.trigger name="add-user">
+    <flux:modal.trigger name="add-project-update">
         <flux:button class="w-full" variant="primary" color="zinc">
             <flux:icon.plus/>
             Input
         </flux:button>
     </flux:modal.trigger>
 
-    <flux:modal name="add-user" class="md:min-w-2xl" submit="addUser">
+    <flux:modal name="add-project-update" class="md:min-w-2xl">
         <div class="space-y-6">
             <div class="py-2">
                 <flux:heading size="lg">Data Form Input</flux:heading>
@@ -77,7 +101,7 @@ new class extends Component {
             </div>
 
 
-            @if (!empty($errorMessages))
+            @if(!empty($errorMessages))
                 <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
                      role="alert">
                     <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true"
@@ -97,30 +121,58 @@ new class extends Component {
             @endif
 
 
-            <flux:input type="date" label="Tanggal Input" wire:model.defer="tanggal_input" />
+            <flux:input type="date" label="Tanggal Input" wire:model.defer="date"/>
 
-            <flux:input label="ID Vendor" placeholder="ID Vendor" wire:model.defer="vendor_id" />
+            <flux:select label="Vendor" wire:model.live="vendor_id">
+                <flux:select.option value="">-- Pilih --</flux:select.option>
+                @foreach($vendors as $vendor)
+                    <flux:select.option value="{{ $vendor->id }}">
+                        {{ $vendor->code }}
+                    </flux:select.option>
+                @endforeach
+            </flux:select>
 
-            <flux:input label="No. Project Aktivasi" placeholder="No. Project Aktivasi" wire:model.defer="no_project_aktivasi" />
+            <flux:select label="No. Project Aktivasi" wire:model.live="project_id" :disabled="!$vendor_id">
+                <flux:select.option value="">-- Pilih --</flux:select.option>
+                @foreach($projects as $project)
+                    <flux:select.option value="{{ $project->id }}">
+                        {{ $project->pa_number }}
+                    </flux:select.option>
+                @endforeach
+            </flux:select>
 
-            <flux:input label="Status Pekerjaan" placeholder="Status Pekerjaan" wire:model.defer="status_pekerjaan" />
+            <flux:select label="Status Pekerjaan" wire:model.defer="job_status">
+                <flux:select.option value="">-- Pilih --</flux:select.option>
+                @foreach(App\Enums\StatusPekerjaan::toSelectOptions() as $option)
+                    <flux:select.option value="{{ $option['value'] }}">
+                        {{ ucwords($option['label']) }}
+                    </flux:select.option>
+                @endforeach
+            </flux:select>
 
-            <flux:input label="Kode Kendala" placeholder="Kode Kendala" wire:model.defer="kode_kendala" />
+            <flux:select label="Problem Status" wire:model.defer="problem_status">
+                <flux:select.option value="">-- Pilih --</flux:select.option>
+               @foreach(App\Enums\TipeKendala::toSelectOptions() as $option)
+                    <flux:select.option value="{{ $option['value'] }}">
+                        {{ $option['label'] }}
+                    </flux:select.option>
+                @endforeach
+            </flux:select>
 
             <flux:textarea style="resize:none" label="Detail Kendala" placeholder="Detail Kendala"
-                           wire:model.defer="detail_kendala" />
+                           wire:model.defer="problem_details"/>
 
-            <flux:input label="Estimasi Tarikan" placeholder="Estimasi Tarikan" wire:model.defer="estimasi_tarikan" />
+            <flux:input label="Estimasi Tarikan" placeholder="Estimasi Tarikan" wire:model.defer="estimated_pull"/>
 
-            <flux:input label="Estimasi Tracing" placeholder="Estimasi Tracing" wire:model.defer="estimasi_tracing" />
+            <flux:input label="Estimasi Tracing" placeholder="Estimasi Tracing" wire:model.defer="estimated_tracing"/>
 
-            <flux:input label="Realisasi Tarikan" placeholder="Realisasi Tarikan" wire:model.defer="realisasi_tarikan" />
+            <flux:input label="Realisasi Tarikan" placeholder="Realisasi Tarikan" wire:model.defer="actual_pull"/>
 
-            <flux:input label="Realisasi Tracing" placeholder="Realisasi Tracing" wire:model.defer="realisasi_tracing" />
+            <flux:input label="Realisasi Tracing" placeholder="Realisasi Tracing" wire:model.defer="actual_tracing"/>
 
             <div class="flex">
                 <flux:spacer/>
-                <flux:button wire:click="addInput" variant="primary">Simpan</flux:button>
+                <flux:button wire:click="addProjectUpdate" variant="primary">Simpan</flux:button>
             </div>
         </div>
     </flux:modal>
