@@ -34,9 +34,9 @@ class ProjectUpdateTable extends DataTableComponent
         ]);
 
         $this->setFilterLayoutSlideDown();
-        $this->setBulkActions([
-            'exportSelected' => 'Export',
-        ]);
+//        $this->setBulkActions([
+//            'exportSelected' => 'Export',
+//        ]);
     }
 
     public function delete($id): void
