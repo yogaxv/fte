@@ -4,6 +4,7 @@ use App\Models\Project;
 use App\Models\Vendor;
 use App\Models\ProjectUpdate;
 use Livewire\Volt\Component;
+use Masmerise\Toaster\Toaster;
 
 new class extends Component {
     public $date;
@@ -65,7 +66,10 @@ new class extends Component {
 
         // Reset input fields
         $this->resetForm();
+
+        Toaster::success('Data created!'); // 👈
     }
+
     public function resetForm()
     {
         $this->reset([
@@ -152,7 +156,7 @@ new class extends Component {
 
             <flux:select label="Problem Status" wire:model.defer="problem_status">
                 <flux:select.option value="">-- Pilih --</flux:select.option>
-               @foreach(App\Enums\TipeKendala::toSelectOptions() as $option)
+                @foreach(App\Enums\TipeKendala::toSelectOptions() as $option)
                     <flux:select.option value="{{ $option['value'] }}">
                         {{ $option['label'] }}
                     </flux:select.option>
