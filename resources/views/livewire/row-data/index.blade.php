@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="mt-5">
-            <livewire:users-table />
+            <livewire:projects-table />
         </div>
     </div>
 </div>

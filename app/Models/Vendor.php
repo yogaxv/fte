@@ -17,14 +17,7 @@ class Vendor extends Model
         'zone',
         'team_count',
         'members_per_team',
-        'user_id',
     ];
-
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function projects()
     {

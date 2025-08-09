@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\StatusPekerjaan;
+use App\Enums\TipeKendala;
 use App\Models\Project;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -28,8 +30,8 @@ class ProjectUpdateFactory extends Factory
             'date' => $updateDate->format('Y-m-d'),
             'vendor_id' => $vendor->id,
             'project_id' => $project->id,
-            'job_status' => $this->faker->numberBetween(1, 100),
-            'problem_status' => $this->faker->numberBetween(0, 3),
+            'job_status' =>  $this->faker->randomElement(array_map(fn($case) => $case->value, StatusPekerjaan::cases())),
+            'problem_status' => $this->faker->randomElement(array_map(fn($case) => $case->value, TipeKendala::cases())),
             'problem_details' => $this->faker->boolean(30) ? $this->faker->sentence(10) : '',
             'estimated_pull' => $this->faker->numberBetween(100, 300),
             'actual_pull' => $this->faker->numberBetween(80, 300),

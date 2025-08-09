@@ -29,7 +29,6 @@ class VendorFactory extends Factory
             'zone' => $this->faker->randomElement(['Area I', 'Area II', 'Area III']),
             'team_count' => $this->faker->numberBetween(1, 5),
             'members_per_team' => $this->faker->numberBetween(2, 10),
-            'user_id' => User::factory()->vendor(),
         ];
     }
 }
