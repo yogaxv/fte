@@ -49,4 +49,13 @@ enum StatusPekerjaan: int
             'label' => $case->description(),
         ], self::cases());
     }
+
+    public static function toSelectOptionsV2(): array
+    {
+        return collect(self::cases())
+            ->mapWithKeys(fn($case) => [
+                $case->value => $case->description(),
+            ])
+            ->toArray();
+    }
 }

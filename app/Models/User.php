@@ -60,9 +60,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-    public function vendors(): HasMany
-    {
-        return $this->hasMany(Vendor::class);
-    }
 }
