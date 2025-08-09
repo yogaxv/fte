@@ -11,7 +11,45 @@ enum StatusPekerjaan: int
     case JOINTING = 5;
     case FOT = 6;
     case CLOSED = 7;
-    case NEEDCEK = 8;
+
+    public function parameter_orang(): float
+    {
+        return match ($this) {
+            self::OPEN => 1,
+            self::SURVEY => 2,
+            self::TRACING => 1,
+            self::JOINTING => 1,
+            self::FOT => 1,
+            default => 0,
+        };
+    }
+
+    public function parameter_hitungan(): float
+    {
+        return match ($this) {
+            self::OPEN => 1,
+            self::SURVEY => 3,
+            self::TRACING => 1,
+            self::JOINTING => 2,
+            self::FOT => 2,
+            self::FOC => 2,
+            default => 0,
+        };
+    }
+
+    public function parameter_khs(): float
+    {
+        return match ($this) {
+            self::OPEN => 1.0,
+            self::SURVEY => 3.0,
+            self::FOC => 1.0,
+            self::TRACING => 0.5,
+            self::JOINTING => 2.0,
+            self::FOT => 2.0,
+            default => 0.0,
+        };
+    }
+
 
     public function description(): string
     {
@@ -23,7 +61,6 @@ enum StatusPekerjaan: int
             self::JOINTING => 'jointing',
             self::FOT => 'fot',
             self::CLOSED => 'closed',
-            self::NEEDCEK => 'needcek',
         };
     }
 
@@ -37,7 +74,6 @@ enum StatusPekerjaan: int
             self::JOINTING => 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
             self::FOT => 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300',
             self::CLOSED => 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300',
-            self::NEEDCEK => 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300',
         };
     }
 

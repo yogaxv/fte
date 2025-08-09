@@ -20,6 +20,12 @@ return new class extends Migration
             $table->string('zone')->nullable();
             $table->smallInteger('team_count')->default(0);
             $table->smallInteger('members_per_team')->default(0);
+            $table->smallInteger('members_per_team')->default(0);
+            $table->double('week_index')->default(0);
+            $table->string('week_analisa')->default('MASA PESIAPAN');
+            $table->double('month_index')->default(0);
+            $table->string('month_analisa')->default('MASA PESIAPAN');
+            $table->integer('consumed_days')->default(0);
             $table->timestamps();
         });
     }
