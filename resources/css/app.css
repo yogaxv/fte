@@ -65,6 +65,14 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
 
+#table-filter-problem_status-wrapper,
+#table-filter-job_status-wrapper,
+#table-filter-status_pekerjaan-wrapper
+{
+    max-height: 200px;
+    overflow-y: auto;
+}
+
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */
