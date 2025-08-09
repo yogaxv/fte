@@ -17,6 +17,11 @@
                     <flux:navlist.item icon="folder-git-2" :href="route('row-data')" :current="request()->routeIs('row-data')" wire:navigate>{{ __('Row Data') }}</flux:navlist.item>
                     <flux:navlist.item icon="book-open-text" :href="route('form-input.list')" :current="request()->routeIs('form-input.list')" wire:navigate>{{ __('Form Input') }}</flux:navlist.item>
                 </flux:navlist.group>
+
+                <flux:navlist.group :heading="__('MASTER')" class="grid">
+                    <flux:navlist.item icon="newspaper" :href="route('projects.list')" :current="request()->routeIs('projects.list')" wire:navigate>{{ __('Project') }}</flux:navlist.item>
+                    <flux:navlist.item icon="building-office-2" :href="route('vendors.list')" :current="request()->routeIs('vendors.list')" wire:navigate>{{ __('Vendor') }}</flux:navlist.item>
+                </flux:navlist.group>
             </flux:navlist>
 
             <flux:spacer />
@@ -140,6 +145,7 @@
 
         {{ $slot }}
 
+        <x-toaster-hub /> <!-- 👈 -->
         @fluxScripts
     </body>
 </html>
