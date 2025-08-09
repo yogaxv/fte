@@ -22,15 +22,17 @@ class ProjectUpdate extends Model
         'actual_tracing',
     ];
 
+    protected $with = ['vendor', 'project'];
+
     // Relasi ke Vendor
     public function vendor()
     {
-        return $this->belongsTo(Vendor::class);
+        return $this->belongsTo(Vendor::class, 'vendor_id');
     }
 
     // Relasi ke Project
     public function project()
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Project::class, 'project_id');
     }
 }

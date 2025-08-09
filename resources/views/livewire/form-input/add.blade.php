@@ -43,7 +43,7 @@ new class extends Component {
 
 
 
-        $this->dispatch('refreshUsersTable');
+        $this->dispatch('refreshProjectUpdateTable');
 
         // Reset input fields
         $this->tanggal_input = null;
