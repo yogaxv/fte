@@ -8,10 +8,12 @@
         </div>
 
         <div>
-            <button class="bg-red-500 text-white flex items-center justify-center rounded px-2 py-3 ">
-                <flux:icon.file-chart-column-increasing/>
-                Summary Report
-            </button>
+{{--            <button class="bg-red-500 text-white flex items-center justify-center rounded px-2 py-3 ">--}}
+{{--                <flux:icon.file-chart-column-increasing/>--}}
+{{--                Summary Report--}}
+{{--            </button>--}}
+
+            <livewire:dashboard.add-project />
         </div>
 
     </div>
